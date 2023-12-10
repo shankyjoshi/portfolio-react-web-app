@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(
+    to right,
+    #98a5ca,
+    #00040c
+  ); /* Gradient background */
+}
+
+.portfolio {
+  display: flex;
+  height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+}
+
+.profile {
+  width: 40%; /* Adjust the width of the profile image */
+  position: relative;
+}
+
+.profile img {
+  width: 110%;
+  border-radius: 10%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  /* padding: 40px; */
+  margin: 40px;
+}
+
+.personal-info {
+  /* position: absolute; */
+  bottom: 0;
+  left: 0;
+  /* padding: 20px; */
+  padding-left: 25%;
+  text-align: center;
+  /* background: rgba(0, 0, 0, 0.7); */
+  /* border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px; */
+  color: #fff;
+  font-size: x-large;
+}
+
+.overlay {
+  flex: 1;
+  padding: 40px;
+  color: #fff; /* Text color */
+
+  /* margin: 40px; */
+  margin-left: 8%;
+  /* box-sizing: border-box; */
+}
+
+.text-content {
+  max-width: 600px;
+}
+
+.text-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.text-content p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-top: 40px;
+}
+
+.section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.experience-item,
+.project-item {
+  margin-bottom: 20px;
+}
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skills li {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 5px;
+}

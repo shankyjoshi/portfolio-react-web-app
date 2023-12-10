@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMultistepForm } from "./useMultiStepForm";
+import Nav from "../Nav";
 import {
   AppBar,
   Box,
@@ -84,11 +85,12 @@ function Intro() {
               borderBottom: (t) => `1px solid ${t.palette.divider}`,
             }}
           >
-            <Toolbar>
+            {/* <Toolbar>
               <Typography variant="h6" color="inherit" noWrap>
                 Heisenberg
               </Typography>
-            </Toolbar>
+            </Toolbar> */}
+            <Nav />
           </AppBar>
           <Container
             sx={{

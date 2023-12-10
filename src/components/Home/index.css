@@ -1,0 +1,15 @@
+.card{
+    margin-right: 1% !important;
+    margin-left: 1% !important;
+    padding: 0px !important;
+    width: 31% !important;
+    height: 100% !important;
+}
+
+.card-body{
+    height: 320px !important;
+}
+
+img{
+    height: 85% !important;
+}
