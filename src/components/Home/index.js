@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
+import Nav from "../Nav";
 
 function Home() {
   return (

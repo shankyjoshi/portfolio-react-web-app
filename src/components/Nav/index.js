@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Nav() {
   return (
