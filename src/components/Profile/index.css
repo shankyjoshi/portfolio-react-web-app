@@ -1,0 +1,61 @@
+.textFields{
+    border: 0;
+    color: gray;
+}
+
+.info-subtype{
+    font-size: larger;
+    text-align: left;
+    color:  gray;
+}
+
+.personal-info{
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+table{
+    text-align: left;
+    /* width: 100%; */
+    vertical-align: top;
+}
+
+tr{
+    vertical-align: top;
+}
+
+td{
+    padding: 5px;
+    vertical-align: top;
+}
+
+.edit-image{
+    text-align: right !important;
+}
+
+.displayPicture{
+    width: 35%;
+    padding: 4%;
+    vertical-align: super;
+    margin-right: 10%;
+}
+
+.profile-image{
+    width: 100%;
+}
+
+#description{
+    width: 200%;
+}
+
+.leftTd{
+    width: 46.5%;
+}
+
+.leftTd2{
+    width: 46.5%;
+}
+
+.leftTd3{
+    width: 48.2%;
+}
