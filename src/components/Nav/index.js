@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Nav() {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <nav class="profile-nav navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,6 +32,7 @@ function Nav() {
               <button className="btn btn-primary ms-2 " onClick={e => navigate("/signin")}>Login</button>
               <button className="btn btn-primary ms-2 " onClick={e => navigate("/signup")}>Sign Up</button>
               <button className="btn btn-primary ms-2 " onClick={e => navigate("/checkout")}>Checkout</button>  
+              {user ? <button className="btn btn-primary ms-2 " onClick={e => navigate("/profile")}>Profile</button> : null } 
             </li>
             <li class="nav-item active float-right">
               <a class="nav-link" href="#">
