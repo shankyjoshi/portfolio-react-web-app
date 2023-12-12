@@ -15,6 +15,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { updateData } from "./portfolioreducer";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useSignup } from "../../hooks/useSignup";
 
 function Copyright(props) {
   return (
@@ -41,13 +43,13 @@ const defaultTheme = createTheme();
 export default function SignUp() {
   const { data } = useSelector((state) => state.portfolioreducer);
   const dispatch = useDispatch();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
     // axios
     //   .post("http://localhost:5690/api/signup", data, {
     //     headers: {
@@ -55,7 +57,12 @@ export default function SignUp() {
     //     },
     //   })
     //   .then((res) => console.log(res.data));
+    await signup(email, password);
   };
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const {signup, isLoading, error} = useSignup();
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -90,10 +97,11 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  value={data.email}
-                  onChange={(e) =>
+                  value={email}
+                  onChange={(e) => {
                     dispatch(updateData({ email: e.target.value }))
-                  }
+                    setEmail(e.target.value)
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -105,10 +113,11 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  value={data.password}
-                  onChange={(e) =>
+                  value={password}
+                  onChange={(e) => {
                     dispatch(updateData({ password: e.target.value }))
-                  }
+                    setPassword(e.target.value)
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -120,14 +129,19 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            {/* <Button
-              //type="submit"
+            <Button
+              disabled={isLoading}
+              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={(e) => {
+                handleSubmit(e)
+              }}
             >
               Sign Up
-            </Button> */}
+            </Button>
+            { error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div> }
             <Grid container justifyContent="flex-end">
               <Grid item>
                 {/* <Link href="#" variant="body2">

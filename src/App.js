@@ -1,6 +1,6 @@
 import { HashRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router";
-import Checkout from "./components/Checkout";
+import Search from "./components/Search/search.jsx";
 import Home from "./components/Home";
 import Intro from "./components/Portfolio/Intro";
 import Nav from "./components/Nav";
@@ -9,8 +9,13 @@ import SignUp from "./components/Portfolio/SignUp";
 import store from "./components/store";
 import { Provider } from "react-redux";
 import Signinside from "./components/SignInSide";
+import { AuthContext } from "./contexts/AuthContext.js";
+import { useContext } from "react";
+import Checkout from "./components/Checkout.js"
 
 function App() {
+  const {user} = useContext(AuthContext)
+  console.log(user);
   return (
     <div>
       <Nav />
@@ -22,8 +27,10 @@ function App() {
               <Route path="/project" element={<Intro />} />
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
               <Route path="/signin" element={<Signinside />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/checkout" element={<Checkout />} />
             </Routes>
           </div>
         </Provider>
