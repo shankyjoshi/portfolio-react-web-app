@@ -25,25 +25,11 @@ import Projects from "./Projects";
 import Skills from "./Skills";
 import { Provider } from "react-redux";
 import store from "../store";
-
-const InitialState = {
-  firstName: "",
-  lastName: "",
-  address1: "",
-  address2: "",
-  city: "",
-  state: "",
-  zip: "",
-  country: "",
-  cardName: "",
-  cardNumber: "",
-  expDate: "",
-  cvv: "",
-  saveCard: false,
-};
+import SignUp from "./SignUp";
 
 function Intro() {
   const steps = [
+    "Sign Up",
     "Personal Information",
     "Social Media",
     "Work Experience",
@@ -52,6 +38,7 @@ function Intro() {
     "Review",
   ];
   const components = [
+    <SignUp />,
     <AddressForm />,
     <SocialMedia />,
     <WorkExp />,

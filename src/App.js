@@ -9,18 +9,18 @@ import Profile from "./components/Profile";
 function App() {
   return (
     <div>
-      <Nav/>
+      <Nav />
       <HashRouter>
-      <div>
-        <Routes>
-          <Route path="/" element={<Navigate to="/project" />} />
-          <Route path="/project" element={<Intro />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/signup" element={<Intro />} />
-        </Routes>
-      </div>
-    </HashRouter>
+        <div>
+          <Routes>
+            <Route path="/" element={<Navigate to="/project" />} />
+            <Route path="/project" element={<Intro />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/signup" element={<Intro />} />
+          </Routes>
+        </div>
+      </HashRouter>
     </div>
   );
 }
