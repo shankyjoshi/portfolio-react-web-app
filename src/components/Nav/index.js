@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from "react-router-dom";
 
 function Nav() {
+  const navigate = useNavigate();
   return (
     <div>
       <nav class="profile-nav navbar navbar-expand-lg navbar-dark bg-dark">
@@ -22,31 +24,12 @@ function Nav() {
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            {/* <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                My Portfolios
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
-                  Action
-                </a>
-                <a class="dropdown-item" href="#">
-                  Another action
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li> */}
+            <li class="nav-item">
+              <button className="btn btn-primary" onClick={e=> navigate("/search")}>Search</button>
+              <button className="btn btn-primary ms-2 " onClick={e => navigate("/signin")}>Login</button>
+              <button className="btn btn-primary ms-2 " onClick={e => navigate("/signup")}>Sign Up</button>
+              <button className="btn btn-primary ms-2 " onClick={e => navigate("/checkout")}>Checkout</button>  
+            </li>
             <li class="nav-item active float-right">
               <a class="nav-link" href="#">
                 <FontAwesomeIcon

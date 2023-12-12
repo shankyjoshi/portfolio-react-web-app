@@ -17,6 +17,7 @@ import {
 import { createClient } from "pexels";
 import { useState } from "react";
 import InfoIcon from "@mui/icons-material/Info";
+import { Link } from "react-router-dom";
 const client = createClient(
   "PrVbdLwHMiKXVG0T9xoLotZ9cG1ML5AqVoCMNwnq7ZXpQ2jfWt6S9q4Z"
 );
@@ -85,9 +86,12 @@ const Search = () => {
                     sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                     aria-label={`info about ${item.alt}`}
                   >
-                    <a href={item.photographer_url}>
+                    <Link to={`/search/${item.id}/details`}>
                       <InfoIcon />
-                    </a>
+                    </Link>
+                    {/* <a href={item.photographer_url}>
+                      <InfoIcon />
+                    </a> */}
                   </IconButton>
                 }
               />

@@ -23,8 +23,7 @@ import WorkExp from "./WorkExp";
 import SocialMedia from "./SocialMedia";
 import Projects from "./Projects";
 import Skills from "./Skills";
-import { Provider, useSelector } from "react-redux";
-import store from "../store";
+import { useSelector } from "react-redux";
 import SignUp from "./SignUp";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -136,7 +135,7 @@ function Intro() {
     <div>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <AppBar
+        {/* <AppBar
           position="absolute"
           color="default"
           elevation={0}
@@ -150,8 +149,8 @@ function Intro() {
                 Heisenberg
               </Typography>
             </Toolbar> */}
-          <Nav />
-        </AppBar>
+          {/* <Nav />
+        </AppBar> */}
         <Container
           sx={{
             maxWidth: "600px",
