@@ -60,22 +60,78 @@ function Intro() {
       mode: "light",
     },
   });
-  const { data } = useSelector((state) => state.portfolioreducer);
-  const handleReview = (e) => {
-    axios
-      .post(
-        "http://localhost:5690/api/signup",
-        { email: data.email, password: data.password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        navigate("/home");
+  const { data, workExp, skills, projects } = useSelector((state) => state.portfolioreducer);
+  const handleReview = async () => {
+    console.log(skills);
+    try {
+      const projectIds = await Promise.all(
+        projects.map(async (project) => {
+          const projectRes = await axios.post("http://localhost:5690/api/projects", {
+            name: project.title,
+            description: project.description,
+          });
+          return projectRes.data._id;
+        })
+      );
+
+      const workExpIds = await Promise.all(
+        workExp.map(async (experience) => {
+          const workExpRes = await axios.post("http://localhost:5690/api/workexperiences", {
+            company: experience.company,
+            position: experience.position,
+            description: experience.description,
+          });
+          return workExpRes.data._id;
+        })
+      );
+      console.log(projectIds, workExpIds);
+      const userData = {
+        email: data.email,
+        password: data.password,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        address1: data.address1,
+        address2: data.address2,
+        city: data.city,
+        state: data.state,
+        zip: data.zip,
+        country: data.country,
+        linkedin: data.linkedin,
+        github: data.github,
+        twitter: data.twitter,
+        portfolio: data.portfolio,
+        projects: projectIds,
+        workExp: workExpIds,
+        skills: skills,
+      };
+
+      const userRes = await axios.post("http://localhost:5690/api/signup", userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+      navigate("/home");
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
   };
+
+  // const handleReview = (e) => {
+  //   console.log(data, workExp, skills, projects);
+  //   axios
+  //     .post(
+  //       "http://localhost:5690/api/signup",
+  //       { email: data.email, password: data.password },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       navigate("/home");
+  //     });
+  // };
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
@@ -102,10 +158,7 @@ function Intro() {
             padding: 2,
           }}
         >
-          <Paper
-            variant="outlined"
-            sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-          >
+          <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
             <Typography component="h1" variant="h4" align="center">
               Fill the Details
             </Typography>
@@ -122,9 +175,8 @@ function Intro() {
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Your order number is #2001539. We have emailed your order confirmation, and will
+                  send you an update when your order has shipped.
                 </Typography>
               </React.Fragment>
             ) : (
@@ -138,19 +190,11 @@ function Intro() {
                       </Button>
                     )}
                     {currentStepIndex !== steps.length - 1 ? (
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{ mt: 3, ml: 1 }}
-                      >
+                      <Button type="submit" variant="contained" sx={{ mt: 3, ml: 1 }}>
                         Next
                       </Button>
                     ) : (
-                      <Button
-                        onClick={handleReview}
-                        variant="contained"
-                        sx={{ mt: 3, ml: 1 }}
-                      >
+                      <Button onClick={handleReview} variant="contained" sx={{ mt: 3, ml: 1 }}>
                         Signup
                       </Button>
                     )}

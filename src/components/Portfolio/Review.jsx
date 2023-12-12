@@ -42,8 +42,10 @@ const ReviewPage = () => {
               <div key={index}>
                 <Typography>{`Company: ${exp.company}`}</Typography>
                 <Typography>{`Position: ${exp.position}`}</Typography>
-                <Typography>{`Start Date: ${exp.startDate}`}</Typography>
-                <Typography>{`End Date: ${exp.endDate}`}</Typography>
+                {/* <Typography>{`Start Date: ${exp.startDate}`}</Typography>
+                <Typography>{`End Date: ${exp.endDate}`}</Typography> */}
+                <Typography>{`Location: ${exp.location}`}</Typography>
+                <Typography>{`Employment Type: ${exp.employmentType}`}</Typography>
                 <Typography>{`Description: ${exp.description}`}</Typography>
                 <hr />
               </div>
