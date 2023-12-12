@@ -12,7 +12,7 @@ const Skills = () => {
       <Autocomplete
         multiple
         id="tags-filled"
-        options={top100Films.map((option) => option.title)}
+        options={softwareDeveloperSkills.map((option) => option.title)}
         freeSolo
         value={skills}
         onChange={(event, newValue) => {
@@ -20,27 +20,44 @@ const Skills = () => {
         }}
         renderTags={(value, getTagProps) =>
           value.map((option, index) => (
-            <Chip
-              variant="filled"
-              color="success"
-              label={option}
-              {...getTagProps({ index })}
-            />
+            <Chip variant="filled" color="success" label={option} {...getTagProps({ index })} />
           ))
         }
         renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="filled"
-            label="Skills"
-            placeholder="Type to add skills"
-          />
+          <TextField {...params} variant="filled" label="Skills" placeholder="Type to add skills" />
         )}
       />
     </>
   );
 };
-
+const softwareDeveloperSkills = [
+  { title: "Programming Languages" },
+  { title: "Web Development" },
+  { title: "Version Control" },
+  { title: "Database Management" },
+  { title: "APIs" },
+  { title: "Problem Solving" },
+  { title: "Algorithm Design" },
+  { title: "Debugging" },
+  { title: "Agile Development" },
+  { title: "Testing" },
+  { title: "Frameworks" },
+  { title: "Continuous Integration/Continuous Deployment (CI/CD)" },
+  { title: "Collaboration Tools" },
+  { title: "Responsive Design" },
+  { title: "Security Best Practices" },
+  { title: "DevOps" },
+  { title: "Soft Skills" },
+  { title: "Java" },
+  { title: "JavaScript" },
+  { title: "Python" },
+  { title: "C#" },
+  { title: "SQL" },
+  { title: "HTML" },
+  { title: "CSS" },
+  { title: "TypeScript" },
+  { title: "Ruby" },
+];
 const top100Films = [
   { title: "The Shawshank Redemption", year: 1994 },
   { title: "The Godfather", year: 1972 },
@@ -110,8 +127,7 @@ const top100Films = [
   { title: "Alien", year: 1979 },
   { title: "Sunset Boulevard", year: 1950 },
   {
-    title:
-      "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+    title: "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
     year: 1964,
   },
   { title: "The Great Dictator", year: 1940 },
