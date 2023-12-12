@@ -5,13 +5,16 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { updateData } from "./portfolioreducer";
+import { Link } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -36,6 +39,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const { data } = useSelector((state) => state.portfolioreducer);
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -43,6 +48,13 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    // axios
+    //   .post("http://localhost:5690/api/signup", data, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then((res) => console.log(res.data));
   };
 
   return (
@@ -66,7 +78,7 @@ export default function SignUp() {
           <Box
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
@@ -78,6 +90,10 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={data.email}
+                  onChange={(e) =>
+                    dispatch(updateData({ email: e.target.value }))
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -89,6 +105,10 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  value={data.password}
+                  onChange={(e) =>
+                    dispatch(updateData({ password: e.target.value }))
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -100,19 +120,20 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
+            {/* <Button
+              //type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up
-            </Button>
+            </Button> */}
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                {/* <Link href="#" variant="body2">
+                Already have an account? Sign in
+                </Link> */}
+                <Link to="/signin">Already have an account? Sign in</Link>
               </Grid>
             </Grid>
           </Box>

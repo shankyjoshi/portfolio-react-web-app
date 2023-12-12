@@ -12,6 +12,8 @@ const data = {
   github: "",
   twitter: "",
   portfolio: "",
+  email: "",
+  password: "",
 };
 
 const workExp = [
